@@ -1,0 +1,2 @@
+class ZoomBreakoutSession < ApplicationRecord
+end
