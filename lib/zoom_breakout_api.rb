@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # test
 
-require 'rest-client'
+# require 'rest-client'
 require 'json'
 
 class ZoomBreakoutAPI
