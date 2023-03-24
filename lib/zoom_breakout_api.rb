@@ -6,9 +6,9 @@ require 'json'
 
 class ZoomBreakoutAPI
   include Rails.application.routes.url_helpers
-  ZM_BREAKOUT_CLIENT_ID = ENV['ZM_BREAKOUT_CLIENT_ID']
-  ZM_BREAKOUT_CLIENT_SECRET = ENV['ZM_BREAKOUT_CLIENT_SECRET']
-  ZM_BREAKOUT_REDIRECT_URL = ENV['ZM_BREAKOUT_REDIRECT_URL']
+  ZM_BREAKOUT_CLIENT_ID = process.env.ZM_BREAKOUT_CLIENT_ID
+  ZM_BREAKOUT_CLIENT_SECRET = process.env.ZM_BREAKOUT_CLIENT_SECRET
+  ZM_BREAKOUT_REDIRECT_URL = process.env.ZM_BREAKOUT_REDIRECT_URL
 
   def self.client
     @auth_params = {
