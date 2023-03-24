@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # test
 
-# require 'rest-client'
+require 'rest-client'
 require 'json'
 
 class ZoomBreakoutAPI
@@ -21,8 +21,10 @@ class ZoomBreakoutAPI
   def get_access_token(code)
     # may want to include code_verifier here https://marketplace.zoom.us/docs/guides/auth/oauth/
     params = "grant_type=authorization_code&code=#{code}&redirect_uri=#{ZM_BREAKOUT_REDIRECT_URL}"
+    puts "##### params = #{params}"
 
     zm_breakout_credentials = "#{ZM_BREAKOUT_CLIENT_ID}:#{ZM_BREAKOUT_CLIENT_SECRET}"
+    puts "##### zm creds = #{zm_breakout_credentials}"
     url_encoded_client_credentials = "#{Base64.urlsafe_encode64(zm_breakout_credentials)}"
 
     headers = {
