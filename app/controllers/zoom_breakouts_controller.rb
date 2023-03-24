@@ -19,7 +19,7 @@ class ZoomBreakoutsController < ApplicationController
 
     token_response = ZoomBreakoutAPI.client.get_access_token(request_code)
     
-    zm_breakout_session = ZoomBreakoutSession.find_by(platform_user_id: current_user.id)
+    zm_breakout_session = ZoomBreakoutSession.last
     if zm_breakout_session
       zm_breakout_session.update!(access_token: token_response['access_token'], refresh_token: token_response['refresh_token'])
     else
