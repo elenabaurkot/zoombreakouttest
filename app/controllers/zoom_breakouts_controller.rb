@@ -37,7 +37,6 @@ class ZoomBreakoutsController < ApplicationController
     end
 
     deep_link = ZoomBreakoutAPI.client.get_deep_link(access_token)
-    puts "##### dee p link = #{deep_link}"
     redirect_to deep_link, allow_other_host: true
   end
 

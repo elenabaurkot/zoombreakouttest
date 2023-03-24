@@ -43,7 +43,8 @@ class ZoomBreakoutAPI
 
     # TODO: Update URL to zoom_breakouts_home_url, right now hardcoding production URL to test in dev
     params = {
-      'url' => 'https://platform.braven.org/discord_servers',
+      # 'url' => 'https://platform.braven.org/discord_servers',
+      'url' => 'https://www.elenabaurkot.com',
       'role_name' => 'Owner',
       'verified' => 1,
       'role_id' => 0
