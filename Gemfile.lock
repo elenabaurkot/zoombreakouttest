@@ -186,6 +186,7 @@ GEM
       netrc (~> 0.8)
     rexml (3.2.5)
     rubyzip (2.3.2)
+    secure_headers (6.5.0)
     selenium-webdriver (4.8.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -237,6 +238,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   rest-client
+  secure_headers
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
