@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  include DryCrud::Controllers
+  # include DryCrud::Controllers
 end
