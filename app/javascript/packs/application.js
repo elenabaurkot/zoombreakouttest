@@ -64,8 +64,9 @@ document.addEventListener("DOMContentLoaded", _ => {
 
   
   // async function getParticipants() {
-  //   response = await zoomSdk.getMeetingParticipants()
+  //   response = await zoomSdk.getMeetingParticipants();
   //   console.log(response)
+  //   return response.participants;
   // }
   const getParticipants = () => {
     zoomSdk.getMeetingParticipants().then(response => {
@@ -74,10 +75,10 @@ document.addEventListener("DOMContentLoaded", _ => {
     })
   }
 
-  const randomizeBreakoutRooms = () => {
+  async function randomizeBreakoutRooms() {
     console.log('time to randomize');
     
-    participants = getParticipants()
+    participants = await getParticipants();
     console.log(participants)
   }
 
