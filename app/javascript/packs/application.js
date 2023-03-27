@@ -81,7 +81,8 @@ document.addEventListener("DOMContentLoaded", _ => {
   }
 
   const addBreakoutRoom = (name) => {
-    zoomSdk.addBreakoutRoom('testroom').then(response => {
+    zoomSdk.addBreakoutRoom(name).then(response => {
+      console.log(response)
       return response
     })
   }
@@ -108,7 +109,7 @@ document.addEventListener("DOMContentLoaded", _ => {
   const randomizeBreakoutRooms = () => {
     getParticipants()
       .then(response => response.participants)
-      .then(participants => addBreakoutRoom)
+      .then(participants => addBreakoutRoom('testroom'))
       .then(response => console.log(response))
   }
 
