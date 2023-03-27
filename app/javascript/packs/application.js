@@ -67,9 +67,14 @@ document.addEventListener("DOMContentLoaded", _ => {
   configureSdk();
 
   
-  async function getParticipants() {
-    response = await zoomSdk.getMeetingParticipants()
-    console.log(response)
+  // async function getParticipants() {
+  //   response = await zoomSdk.getMeetingParticipants()
+  //   console.log(response)
+  // }
+  const getParticipants = () => {
+    zoomSdk.getMeetingParticipants().then(response => {
+      console.log(response)
+    })
   }
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
