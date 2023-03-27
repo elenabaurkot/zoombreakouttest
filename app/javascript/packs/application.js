@@ -8,11 +8,7 @@ import zoomSdk from "@zoom/appssdk"
 
 
 document.addEventListener("DOMContentLoaded", _ => {
-  console.log(apis)
-  console.log('Hello from application.js')
-  console.log('test2')
-
-
+  const randomizeBtn = document.getElementById('randomize-btn');
 
   async function configureSdk() {
   // // to account for the 2 hour timeout for config
@@ -77,7 +73,12 @@ document.addEventListener("DOMContentLoaded", _ => {
     })
   }
 
+  const randomizeBreakoutRooms = () => {
+    console.log('time to randomize');
+  }
+
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
+  randomizeBtn.addEventListener('onClick', randomizeBreakoutRooms)
 })
 
 
