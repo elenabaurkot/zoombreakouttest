@@ -61,6 +61,36 @@ const apis = [
     name: 'getMeetingParticipants'
   },
   {
+    name: 'createBreakoutRooms'
+  },
+  {
+    name: 'configureBreakoutRooms'
+  },
+  {
+    name: 'openBreakoutRooms'
+  },
+  {
+    name: 'closeBreakoutRooms'
+  },
+  {
+    name: 'addBreakoutRoom'
+  },
+  {
+    name: 'deleteBreakoutRoom'
+  },
+  {
+    name: 'renameBreakoutRoom'
+  },
+  {
+    name: 'changeBreakoutRoom'
+  },
+  {
+    name: 'assignParticipantToBreakoutRoom'
+  },
+  {
+    name: 'getBreakoutRoomList'
+  },
+  {
     name: 'getMeetingUUID'
   },
   {

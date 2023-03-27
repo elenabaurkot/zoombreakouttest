@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", _ => {
         "changeBreakoutRoom",
         "assignParticipantToBreakoutRoom",
         "getBreakoutRoomList",
+        "onParticipantChange"
       ],
       version: "0.16.0",
     });
@@ -66,9 +67,12 @@ document.addEventListener("DOMContentLoaded", _ => {
   configureSdk();
 
   
-  
-  // response = zoomSdk.getMeetingParticipants()
-  // console.log(response)
+  const getParticipants = () => {
+    response = zoomSdk.getMeetingParticipants()
+    console.log(response)
+  }
+
+  zoomSdk.addEventListener('onParticipantChange', getParticipants)
 })
 
 
