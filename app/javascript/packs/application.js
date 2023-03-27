@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", _ => {
   async function randomizeBreakoutRooms() {
     console.log('time to randomize');
     
-    participants = await getParticipants();
+    let participants = await getParticipants();
     console.log(participants)
   }
 
