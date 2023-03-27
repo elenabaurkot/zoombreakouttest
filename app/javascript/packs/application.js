@@ -4,3 +4,4 @@ require("@rails/activestorage").start()
 require("channels")
 
 console.log('Hello from application.js')
+console.log('test2')
