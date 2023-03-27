@@ -68,12 +68,30 @@ document.addEventListener("DOMContentLoaded", _ => {
   //   console.log(response)
   //   return response.participants;
   // }
-  const getParticipants = () => {
-    zoomSdk.getMeetingParticipants().then(response => {
-      console.log(response.participants)
-      return response.participants
-    })
+  async function getParticipants() {
+    try { return await zoomSdk.getMeetingParticipants().promise(); }
+    catch (error) { console.log('error' + error); }
+    finally { console.log('finished getting participants'); }
   }
+
+  // const getParticipants = () => {
+  //   zoomSdk.getMeetingParticipants().then(response => {
+  //     console.log(response.participants)
+  //     return response.participants
+  //   })
+  // }
+
+//   async function getData() {
+//     try {
+//         return await $.getJSON('./data.json').promise();
+//     }
+//     catch (error) {
+//         console.log("error" + error);
+//     }
+//     finally {
+//         console.log('done');
+//     }
+// }
 
   async function randomizeBreakoutRooms() {
     console.log('time to randomize');
