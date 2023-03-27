@@ -9,7 +9,6 @@ import zoomSdk from "@zoom/appssdk"
 
 document.addEventListener("DOMContentLoaded", _ => {
   const randomizeBtn = document.getElementById('randomize-btn');
-  console.log(randomizeBtn);
 
   async function configureSdk() {
   // // to account for the 2 hour timeout for config
@@ -71,11 +70,15 @@ document.addEventListener("DOMContentLoaded", _ => {
   const getParticipants = () => {
     zoomSdk.getMeetingParticipants().then(response => {
       console.log(response)
+      return response.participants
     })
   }
 
   const randomizeBreakoutRooms = () => {
     console.log('time to randomize');
+    
+    participants = getParticipants()
+    console.log(participants)
   }
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
