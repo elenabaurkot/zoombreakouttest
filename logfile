@@ -6,3 +6,62 @@
 2023-03-24 11:14:21.575 PDT [30165] WARNING:  could not create listen socket for "localhost"
 2023-03-24 11:14:21.575 PDT [30165] FATAL:  could not create any TCP/IP sockets
 2023-03-24 11:14:21.575 PDT [30165] LOG:  database system is shut down
+2023-03-26 21:18:55.724 PDT [92751] LOG:  starting PostgreSQL 14.7 (Homebrew) on x86_64-apple-darwin20.6.0, compiled by Apple clang version 13.0.0 (clang-1300.0.29.30), 64-bit
+2023-03-26 21:18:55.728 PDT [92751] LOG:  listening on IPv6 address "::1", port 5432
+2023-03-26 21:18:55.729 PDT [92751] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-03-26 21:18:55.730 PDT [92751] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-03-26 21:18:55.735 PDT [92752] LOG:  database system was shut down at 2023-03-26 21:18:44 PDT
+2023-03-26 21:18:55.739 PDT [92751] LOG:  database system is ready to accept connections
+2023-03-26 21:19:10.979 PDT [92799] FATAL:  role "user" does not exist
+2023-03-26 21:21:31.938 PDT [92751] LOG:  received fast shutdown request
+2023-03-26 21:21:31.939 PDT [92751] LOG:  aborting any active transactions
+2023-03-26 21:21:31.942 PDT [92751] LOG:  background worker "logical replication launcher" (PID 92758) exited with exit code 1
+2023-03-26 21:21:31.943 PDT [92753] LOG:  shutting down
+2023-03-26 21:21:31.950 PDT [92751] LOG:  database system is shut down
+2023-03-26 21:22:53.247 PDT [93199] LOG:  starting PostgreSQL 14.7 (Homebrew) on x86_64-apple-darwin20.6.0, compiled by Apple clang version 13.0.0 (clang-1300.0.29.30), 64-bit
+2023-03-26 21:22:53.249 PDT [93199] LOG:  listening on IPv6 address "::1", port 5432
+2023-03-26 21:22:53.249 PDT [93199] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-03-26 21:22:53.251 PDT [93199] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-03-26 21:22:53.261 PDT [93200] LOG:  database system was shut down at 2023-03-26 21:21:31 PDT
+2023-03-26 21:22:53.266 PDT [93199] LOG:  database system is ready to accept connections
+2023-03-26 21:22:58.741 PDT [93230] FATAL:  role "user" does not exist
+2023-03-26 21:23:52.740 PDT [93314] FATAL:  database "elenabaurkot" does not exist
+2023-03-26 21:25:40.607 PDT [93747] FATAL:  role "user" does not exist
+2023-03-26 21:25:51.153 PDT [93199] LOG:  received fast shutdown request
+2023-03-26 21:25:51.153 PDT [93199] LOG:  aborting any active transactions
+2023-03-26 21:25:51.155 PDT [93199] LOG:  background worker "logical replication launcher" (PID 93206) exited with exit code 1
+2023-03-26 21:25:51.156 PDT [93201] LOG:  shutting down
+2023-03-26 21:25:51.164 PDT [93199] LOG:  database system is shut down
+2023-03-26 21:25:55.302 PDT [93794] LOG:  starting PostgreSQL 14.7 (Homebrew) on x86_64-apple-darwin20.6.0, compiled by Apple clang version 13.0.0 (clang-1300.0.29.30), 64-bit
+2023-03-26 21:25:55.305 PDT [93794] LOG:  listening on IPv6 address "::1", port 5432
+2023-03-26 21:25:55.305 PDT [93794] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-03-26 21:25:55.306 PDT [93794] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-03-26 21:25:55.311 PDT [93795] LOG:  database system was shut down at 2023-03-26 21:25:51 PDT
+2023-03-26 21:25:55.314 PDT [93794] LOG:  database system is ready to accept connections
+2023-03-26 21:26:02.783 PDT [93829] FATAL:  role "user" does not exist
+2023-03-26 21:28:32.741 PDT [94156] FATAL:  database "elenabaurkot" does not exist
+2023-03-26 21:29:21.609 PDT [94254] FATAL:  database "elenabaurkot" does not exist
+2023-03-26 21:29:48.494 PDT [94337] FATAL:  database "test_db" does not exist
+2023-03-26 21:30:26.244 PDT [94410] FATAL:  database "elenabaurkot" does not exist
+2023-03-26 21:30:38.776 PDT [94442] FATAL:  database "elenabaurkot" does not exist
+2023-03-26 21:31:15.088 PDT [94530] FATAL:  database "::1" does not exist
+2023-03-26 21:31:22.086 PDT [94547] FATAL:  database "tcp4" does not exist
+2023-03-26 21:31:24.699 PDT [94561] FATAL:  database "tcp6" does not exist
+2023-03-26 21:31:27.218 PDT [94576] FATAL:  database "94" does not exist
+2023-03-26 21:32:43.574 PDT [94798] FATAL:  database "elenabaurkot" does not exist
+2023-03-26 21:33:01.606 PDT [94829] FATAL:  database "elenabaurkot" does not exist
+2023-03-26 21:33:05.605 PDT [94836] FATAL:  database "elenabaurkot" does not exist
+2023-03-26 21:39:27.131 PDT [95520] FATAL:  lock file "postmaster.pid" already exists
+2023-03-26 21:39:27.131 PDT [95520] HINT:  Is another postmaster (PID 93794) running in data directory "/usr/local/var/postgres@14"?
+2023-03-26 21:39:51.412 PDT [93794] LOG:  received fast shutdown request
+2023-03-26 21:39:51.413 PDT [93794] LOG:  aborting any active transactions
+2023-03-26 21:39:51.414 PDT [94931] FATAL:  terminating connection due to administrator command
+2023-03-26 21:39:51.414 PDT [93794] LOG:  background worker "logical replication launcher" (PID 93801) exited with exit code 1
+2023-03-26 21:39:51.415 PDT [93796] LOG:  shutting down
+2023-03-26 21:39:51.426 PDT [93794] LOG:  database system is shut down
+2023-03-26 21:39:55.242 PDT [95568] LOG:  starting PostgreSQL 14.7 (Homebrew) on x86_64-apple-darwin20.6.0, compiled by Apple clang version 13.0.0 (clang-1300.0.29.30), 64-bit
+2023-03-26 21:39:55.244 PDT [95568] LOG:  listening on IPv6 address "::1", port 5432
+2023-03-26 21:39:55.244 PDT [95568] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-03-26 21:39:55.245 PDT [95568] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-03-26 21:39:55.261 PDT [95569] LOG:  database system was shut down at 2023-03-26 21:39:51 PDT
+2023-03-26 21:39:55.265 PDT [95568] LOG:  database system is ready to accept connections

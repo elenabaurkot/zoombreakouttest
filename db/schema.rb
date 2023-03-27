@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_20_144312) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "zoom_breakout_sessions", force: :cascade do |t|
     t.string "access_token", null: false
     t.string "refresh_token", null: false
