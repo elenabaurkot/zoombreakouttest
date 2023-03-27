@@ -80,6 +80,12 @@ document.addEventListener("DOMContentLoaded", _ => {
     })
   }
 
+  const addBreakoutRoom = (name) => {
+    zoomSdk.addBreakoutRoom('testroom').then(response => {
+      return response
+    })
+  }
+
 //   async function getData() {
 //     try {
 //         return await $.getJSON('./data.json').promise();
@@ -100,9 +106,10 @@ document.addEventListener("DOMContentLoaded", _ => {
   // }
 
   const randomizeBreakoutRooms = () => {
-    getParticipants
+    getParticipants()
       .then(response => response.participants)
-      .then(test => console.log(test))
+      .then(participants => addBreakoutRoom)
+      .then(response => console.log(response))
   }
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
