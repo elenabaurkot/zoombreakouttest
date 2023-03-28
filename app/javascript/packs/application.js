@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", _ => {
   // }
 
   const getParticipants = () => {
-    zoomSdk.getMeetingParticipants()
+    return zoomSdk.getMeetingParticipants()
     // zoomSdk.getMeetingParticipants().then(response => {
     //   console.log(response.participants);
     //   return response.participants;
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", _ => {
   }
 
   const addBreakoutRoom = (name) => {
-    zoomSdk.addBreakoutRoom(name)
+    return zoomSdk.addBreakoutRoom(name)
     // zoomSdk.addBreakoutRoom(name).then(response => {
     //   console.log(response);
     //   return response;
