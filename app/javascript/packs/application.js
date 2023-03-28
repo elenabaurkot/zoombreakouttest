@@ -124,10 +124,10 @@ document.addEventListener("DOMContentLoaded", _ => {
   // }
 
   async function randomizeBreakoutRooms() {
-    participants = await getParticipants();
+    let participants = await getParticipants();
     console.log(participants);
 
-    room = await addBreakoutRoom();
+    let room = await addBreakoutRoom();
     console.log(room)
   }
 
