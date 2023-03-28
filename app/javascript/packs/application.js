@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", _ => {
       // get number of volunteers (prefix of V - )
       // get number of Fellows (prefix of # - )
       // Don't want to include staff in these numbers
-      let volunteerCount = fellowVolunteerObj[volunteers].length;
-      let fellowCount = fellowVolunteerObj[fellows].length
+      let volunteerCount = fellowVolunteerObj['volunteers'].length;
+      let fellowCount = fellowVolunteerObj['fellows'].length
       console.log(`volunteer count = ${volunteerCount}`);
       console.log(`fellow count = ${fellowCount}`);
 
