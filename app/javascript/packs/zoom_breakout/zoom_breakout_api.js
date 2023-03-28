@@ -17,7 +17,7 @@ const createBreakoutRooms = (numberOfRooms) => {
   // can also pass names: ['room1', 'room2', ect.]
   return zoomSdk.createBreakoutRooms({
     numberOfRooms: numberOfRooms,
-    assign: 'automatically'
+    assign: 'manually'
   })
 }
 
@@ -69,6 +69,23 @@ async function configureSdk() {
     version: "0.16.0",
   });
   console.log("App configured", configResponse);
+// The config method returns the running context of the Zoom App
+//     setRunningContext(configResponse.runningContext);
+//     setUserContextStatus(configResponse.auth.status);
+//     zoomSdk.onSendAppInvitation((data) => {
+//       console.log(data);
+//     });
+//     zoomSdk.onShareApp((data) => {
+//       console.log(data);
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     setError("There was an error configuring the JS SDK");
+//   }
+//   return () => {
+//     clearTimeout(configTimer);
+//   };
+// }
 }
 
 export {
