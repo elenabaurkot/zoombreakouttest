@@ -10,7 +10,7 @@ const addBreakoutRoom = (numberOfRooms) => {
   console.log(numberOfRooms);
   let roomsToAdd = {};
   console.log(roomsToAdd);
-  for(let num = 1; num <= numberOfRooms; num++) {
+  for(let num = 1; num <= 6; num++) {
     roomsToAdd['name'] = `room${num}`;
   }
   console.log(roomsToAdd);
