@@ -6,16 +6,16 @@ const getParticipants = () => {
   return zoomSdk.getMeetingParticipants()
 }
 
-const addBreakoutRoom = (numberOfRooms) => {
+const createBreakoutRooms = (numberOfRooms) => {
   console.log(numberOfRooms);
-  let roomsToAdd = {};
-  console.log(roomsToAdd);
-  for(let num = 1; num <= 6; num++) {
-    roomsToAdd['name'] = `room${num}`;
-  }
-  console.log(roomsToAdd);
-
-  return zoomSdk.addBreakoutRoom(roomsToAdd)
+  // let roomsToAdd = {};
+  // console.log(roomsToAdd);
+  // for(let num = 1; num <= 6; num++) {
+  //   roomsToAdd['name'] = `room${num}`;
+  // }
+  // console.log(roomsToAdd);
+  // can also pass name: ['room1', 'room2', ect.]
+  return zoomSdk.createBreakoutRooms({numberOfRooms: numberOfRooms})
 }
 
 async function configureSdk() {
@@ -71,5 +71,5 @@ async function configureSdk() {
 export {
   configureSdk,
   getParticipants,
-  addBreakoutRoom
+  createBreakoutRooms
 }
