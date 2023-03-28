@@ -21,6 +21,10 @@ const createBreakoutRooms = (numberOfRooms) => {
   })
 }
 
+const assignParticipantToBreakoutRoom = (breakoutRoomUUID, participantId) => {
+  return zoomSdk.assignParticipantToBreakoutRoom({uuid: breakoutRoomUUID, participant: participantId})
+}
+
 async function configureSdk() {
   // // to account for the 2 hour timeout for config
   // const configTimer = setTimeout(() => {
@@ -91,5 +95,6 @@ async function configureSdk() {
 export {
   configureSdk,
   getParticipants,
-  createBreakoutRooms
+  createBreakoutRooms,
+  assignParticipantToBreakoutRoom
 }
