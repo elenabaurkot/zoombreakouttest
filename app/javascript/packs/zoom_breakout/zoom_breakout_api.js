@@ -6,17 +6,17 @@ const getParticipants = () => {
   return zoomSdk.getMeetingParticipants()
 }
 
-// const addBreakoutRoom = (numberOfRooms) => {
-//   console.log(numberOfRooms);
-//   roomsToAdd = {};
-//   console.log(roomsToAdd);
-//   for(let num = 1; num <= numberOfRooms; num++) {
-//     roomsToAdd[`room${num}`] = `room${num}`;
-//   }
-//   console.log(roomsToAdd);
+const addBreakoutRoom = (numberOfRooms) => {
+  console.log(numberOfRooms);
+  let roomsToAdd = {};
+  console.log(roomsToAdd);
+  for(let num = 1; num <= numberOfRooms; num++) {
+    roomsToAdd[`room${num}`] = `room${num}`;
+  }
+  console.log(roomsToAdd);
 
-//   return zoomSdk.addBreakoutRoom(roomsToAdd)
-// }
+  return zoomSdk.addBreakoutRoom(roomsToAdd)
+}
 
 async function configureSdk() {
   // // to account for the 2 hour timeout for config
@@ -71,5 +71,5 @@ async function configureSdk() {
 export {
   configureSdk,
   getParticipants,
-  // addBreakoutRoom
+  addBreakoutRoom
 }
