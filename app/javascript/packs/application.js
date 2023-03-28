@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", _ => {
 
     // let room = await addBreakoutRoom('testroom');
     // console.log(room);
+    addBreakoutRoom()
   }
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
