@@ -71,10 +71,10 @@ document.addEventListener("DOMContentLoaded", _ => {
   }
 
   async function randomizeBreakoutRooms() {
-    let participants = await getParticipants();
-    console.log(participants);
+    let participantResponse = await getParticipants();
+    console.log(participantResponse.participants);
 
-    let numberOfRooms = getNumberOfBreakoutRooms(participants);
+    let numberOfRooms = getNumberOfBreakoutRooms(participantResponse.participants);
     console.log(numberOfRooms)
 
     let room = await addBreakoutRoom(numberOfRooms);
