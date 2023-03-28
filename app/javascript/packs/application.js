@@ -3,6 +3,20 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+// general flow
+// participants enter (maybe have to authorize app?)
+// when ready, randomize brekaout rooms
+  // it gets the participants
+  // creates breakout rooms based on numbers of vols and fellows
+  // adds participants to rooms
+  // opens rooms
+  // saves configuration
+// after rooms are created you can manually add rooms and add ppl to them
+  // if you do this you must click to save the new configuration when done
+  // if you don't save the manual updates you made won't be accounted for
+  // when making the next round of breakouts which could result in double matching
+
+
 import { apis } from "./zoom_apis"
 import zoomSdk from "@zoom/appssdk"
 
@@ -75,16 +89,19 @@ document.addEventListener("DOMContentLoaded", _ => {
   // }
 
   const getParticipants = () => {
-    zoomSdk.getMeetingParticipants().then(response => {
-      return response.participants
-    })
+    zoomSdk.getMeetingParticipants()
+    // zoomSdk.getMeetingParticipants().then(response => {
+    //   console.log(response.participants);
+    //   return response.participants;
+    // })
   }
 
   const addBreakoutRoom = (name) => {
-    zoomSdk.addBreakoutRoom(name).then(response => {
-      console.log(response)
-      return response
-    })
+    zoomSdk.addBreakoutRoom(name)
+    // zoomSdk.addBreakoutRoom(name).then(response => {
+    //   console.log(response);
+    //   return response;
+    // })
   }
 
 //   async function getData() {
@@ -106,11 +123,12 @@ document.addEventListener("DOMContentLoaded", _ => {
   //   console.log(participants)
   // }
 
-  const randomizeBreakoutRooms = () => {
-    getParticipants()
-      .then(response => response.participants)
-      .then(participants => addBreakoutRoom('testroom'))
-      .then(response => console.log(response))
+  async function randomizeBreakoutRooms() {
+    participants = await getParticipants();
+    console.log(participants);
+
+    room = await addBreakoutRoom();
+    console.log(room)
   }
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
