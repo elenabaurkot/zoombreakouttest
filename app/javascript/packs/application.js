@@ -16,65 +16,21 @@ require("channels")
   // if you don't save the manual updates you made won't be accounted for
   // when making the next round of breakouts which could result in double matching
 
-
-import { apis } from "./zoom_apis"
 import zoomSdk from "@zoom/appssdk"
+import { 
+  configureSdk,
+  getParticipants,
+  addBreakoutRoom
+} from "./zoom_breakout/zoom_breakout_api"
 
 
 document.addEventListener("DOMContentLoaded", _ => {
-  const randomizeBtn = document.getElementById('randomize-btn');
-
-  async function configureSdk() {
-  // // to account for the 2 hour timeout for config
-  // const configTimer = setTimeout(() => {
-  //   setCounter(counter + 1);
-  // }, 120 * 60 * 1000);
-
-    const configResponse = await zoomSdk.config({
-      capabilities: [
-        // apis demoed in the buttons
-        ...apis.map((api) => api.name), // IMPORTANT
-
-        // demo events
-        "onSendAppInvitation",
-        "onShareApp",
-        "onActiveSpeakerChange",
-        "onMeeting",
-        "onBreakoutRoomChange",
-
-        // connect api and event
-        "connect",
-        "onConnect",
-        "postMessage",
-        "onMessage",
-
-        // in-client api and event
-        "authorize",
-        "onAuthorized",
-        "promptAuthorize",
-        "getUserContext",
-        "onMyUserContextChange",
-        "sendAppInvitationToAllParticipants",
-        "sendAppInvitation",
-        "getMeetingParticipants",
-        "createBreakoutRooms",
-        "configureBreakoutRooms",
-        "openBreakoutRooms",
-        "closeBreakoutRooms",
-        "addBreakoutRoom",
-        "deleteBreakoutRoom",
-        "renameBreakoutRoom",
-        "changeBreakoutRoom",
-        "assignParticipantToBreakoutRoom",
-        "getBreakoutRoomList",
-        "onParticipantChange"
-      ],
-      version: "0.16.0",
-    });
-    console.log("App configured", configResponse);
-  }
-  
+  // Thinking I should update this to configureSdk.then
+  // and nest everything else inside the .then?
   configureSdk();
+
+  const randomizeBtn = document.getElementById('randomize-btn');
+  console.log(randomizeBtn)
 
   
   // async function getParticipants() {
@@ -88,29 +44,49 @@ document.addEventListener("DOMContentLoaded", _ => {
   //   finally { console.log('finished getting participants'); }
   // }
 
-  const getParticipants = () => {
-    return zoomSdk.getMeetingParticipants()
-  }
+  // const getParticipants = () => {
+  //   return zoomSdk.getMeetingParticipants()
+  // }
 
-  const addBreakoutRoom = (name, name1) => {
-    return zoomSdk.addBreakoutRoom({
-      name: name,
-      name: name1
-    })
-    // zoomSdk.addBreakoutRoom(name).then(response => {
-    //   console.log(response);
-    //   return response;
-    // })
+  // const addBreakoutRoom = (name, name1) => {
+  //   return zoomSdk.addBreakoutRoom({
+  //     name: name,
+  //     name: name1
+  //   })
+  //   // zoomSdk.addBreakoutRoom(name).then(response => {
+  //   //   console.log(response);
+  //   //   return response;
+  //   // })
+  // }
+  
+  const getNumberOfBreakoutRooms = (participants) => {
+    // get number of volunteers
+    // get number of Fellows
+    // if there are more Fellows than volunteers, create same num of rooms as there are volunteers
+      // wont pair fellows
+    // if more volunteers, create same num of rooms as there are Fellows
+      // Will pair volunteers
+    let numberOfRooms = (participants.length / 2).floor()
+    return numberOfRooms
   }
-
 
   async function randomizeBreakoutRooms() {
     let participants = await getParticipants();
     console.log(participants);
 
-    let room = await addBreakoutRoom('testroom','testroom2');
+    let numberOfRooms = getNumberOfBreakoutRooms(participants);
+    console.log(numberOfRooms)
+
+    let room = await addBreakoutRoom(numberOfRooms);
     console.log(room);
+
+    // createMatches
+    // add matches to rooms
+    // export matches
   }
+
+  // option to resave matches?
+  // re-randomize (should prob take in previous set of matches to ensure no doubles)
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
   randomizeBtn.addEventListener('click', randomizeBreakoutRooms)
