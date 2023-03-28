@@ -17,7 +17,7 @@ const createBreakoutRooms = (numberOfRooms) => {
   // can also pass names: ['room1', 'room2', ect.]
   return zoomSdk.createBreakoutRooms({
     numberOfRooms: numberOfRooms,
-    assign: 'manually'
+    assign: 'automatically'
   })
 }
 

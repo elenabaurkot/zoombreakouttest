@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", _ => {
     console.log(participants);
 
     let numberOfRooms = getNumberOfBreakoutRooms(participants);
+    // error handling (if number = 0...)
     console.log(`number of rooms = ${numberOfRooms}`)
 
     // let response = await zoomSdk.createBreakoutRooms({numberOfRooms: 5, assign: 'manually'})
