@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", _ => {
   configureSdk().then(response => {
     // not sure what we will need to return in (in the case of a timeout?)
     console.log(response);
+    let randomizeBtn = document.getElementById('randomize-btn');
 
     async function getFellowsAndVolunteers() {
       let participantResponse = await getParticipants();
