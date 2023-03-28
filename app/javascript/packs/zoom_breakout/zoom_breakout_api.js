@@ -74,5 +74,5 @@ async function configureSdk() {
 export {
   configureSdk,
   getParticipants,
-  // createBreakoutRooms
+  createBreakoutRooms
 }

@@ -20,7 +20,7 @@ import zoomSdk from "@zoom/appssdk"
 import { 
   configureSdk,
   getParticipants,
-  // createBreakoutRooms
+  createBreakoutRooms
 } from "./zoom_breakout/zoom_breakout_api"
 
 
@@ -90,12 +90,12 @@ document.addEventListener("DOMContentLoaded", _ => {
     console.log(participants);
 
     let numberOfRooms = getNumberOfBreakoutRooms(participants);
-    console.log(numberOfRooms)
+    console.log(`number of rooms = ${numberOfRooms}`)
 
-    let response = await zoomSdk.createBreakoutRooms({numberOfRooms: 5, assign: 'manually'})
-    console.log(response)
-    // let room = await createBreakoutRooms(numberOfRooms);
-    // console.log(room);
+    // let response = await zoomSdk.createBreakoutRooms({numberOfRooms: 5, assign: 'manually'})
+    // console.log(response)
+    let room = await createBreakoutRooms(numberOfRooms);
+    console.log(room);
 
     // createMatches
     // add matches to rooms
