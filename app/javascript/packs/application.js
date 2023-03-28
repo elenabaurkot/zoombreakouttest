@@ -92,8 +92,11 @@ document.addEventListener("DOMContentLoaded", _ => {
     return zoomSdk.getMeetingParticipants()
   }
 
-  const addBreakoutRoom = (name) => {
-    return zoomSdk.addBreakoutRoom(name)
+  const addBreakoutRoom = (name, name1) => {
+    return zoomSdk.addBreakoutRoom({
+      name: name,
+      name: name1
+    })
     // zoomSdk.addBreakoutRoom(name).then(response => {
     //   console.log(response);
     //   return response;
@@ -105,9 +108,8 @@ document.addEventListener("DOMContentLoaded", _ => {
     let participants = await getParticipants();
     console.log(participants);
 
-    let room = await addBreakoutRoom({name: 'testroom'});
+    let room = await addBreakoutRoom('testroom','testroom2');
     console.log(room);
-    // addBreakoutRoom()
   }
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
