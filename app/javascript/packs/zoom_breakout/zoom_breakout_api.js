@@ -1,3 +1,8 @@
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+
 /* globals zoomSdk */
 import zoomSdk from "@zoom/appssdk"
 import { apis } from "./zoom_breakout_app"
@@ -7,6 +12,7 @@ const getParticipants = () => {
 }
 
 const addBreakoutRoom = (numberOfRooms) => {
+  console.log(numberOfRooms)
   roomsToAdd = {}
   for(let num = 1; num <= numberOfRooms; num++) {
     roomsToAdd[`room${num}`] = `room${num}`;
