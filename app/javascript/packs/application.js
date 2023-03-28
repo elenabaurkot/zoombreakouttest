@@ -90,10 +90,6 @@ document.addEventListener("DOMContentLoaded", _ => {
 
   const getParticipants = () => {
     return zoomSdk.getMeetingParticipants()
-    // zoomSdk.getMeetingParticipants().then(response => {
-    //   console.log(response.participants);
-    //   return response.participants;
-    // })
   }
 
   const addBreakoutRoom = (name) => {
@@ -103,18 +99,6 @@ document.addEventListener("DOMContentLoaded", _ => {
     //   return response;
     // })
   }
-
-//   async function getData() {
-//     try {
-//         return await $.getJSON('./data.json').promise();
-//     }
-//     catch (error) {
-//         console.log("error" + error);
-//     }
-//     finally {
-//         console.log('done');
-//     }
-// }
 
   // async function randomizeBreakoutRooms() {
   //   console.log('time to randomize');
@@ -127,8 +111,8 @@ document.addEventListener("DOMContentLoaded", _ => {
     let participants = await getParticipants();
     console.log(participants);
 
-    let room = await addBreakoutRoom();
-    console.log(room)
+    let room = await addBreakoutRoom('testroom');
+    console.log(room);
   }
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
