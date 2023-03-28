@@ -60,21 +60,24 @@ document.addEventListener("DOMContentLoaded", _ => {
   // }
   
   const getNumberOfBreakoutRooms = (participants) => {
+    console.log(participants);
+    console.log(participants.length);
     // get number of volunteers
     // get number of Fellows
     // if there are more Fellows than volunteers, create same num of rooms as there are volunteers
       // wont pair fellows
     // if more volunteers, create same num of rooms as there are Fellows
       // Will pair volunteers
-    let numberOfRooms = (participants.length / 2).floor()
+    let numberOfRooms = Math.floor(participants.length / 2)
     return numberOfRooms
   }
 
   async function randomizeBreakoutRooms() {
     let participantResponse = await getParticipants();
-    console.log(participantResponse.participants);
+    let participants = participantResponse.participants;
+    console.log(participants);
 
-    let numberOfRooms = getNumberOfBreakoutRooms(participantResponse.participants);
+    let numberOfRooms = getNumberOfBreakoutRooms(participants);
     console.log(numberOfRooms)
 
     let room = await addBreakoutRoom(numberOfRooms);
