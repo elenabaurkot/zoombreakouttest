@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", _ => {
     let numberOfRooms = getNumberOfBreakoutRooms(participants);
     console.log(numberOfRooms)
 
-    response = await zoomSdk.createBreakoutRooms({numberOfRooms: 5, assign: 'manually'})
+    let response = await zoomSdk.createBreakoutRooms({numberOfRooms: 5, assign: 'manually'})
     console.log(response)
     // let room = await createBreakoutRooms(numberOfRooms);
     // console.log(room);
