@@ -14,8 +14,11 @@ const createBreakoutRooms = (numberOfRooms) => {
   //   roomsToAdd['name'] = `room${num}`;
   // }
   // console.log(roomsToAdd);
-  // can also pass name: ['room1', 'room2', ect.]
-  return zoomSdk.createBreakoutRooms({numberOfRooms: numberOfRooms})
+  // can also pass names: ['room1', 'room2', ect.]
+  return zoomSdk.createBreakoutRooms({
+    numberOfRooms: numberOfRooms,
+    assign: 'manually'
+  })
 }
 
 async function configureSdk() {
@@ -71,5 +74,5 @@ async function configureSdk() {
 export {
   configureSdk,
   getParticipants,
-  createBreakoutRooms
+  // createBreakoutRooms
 }
