@@ -33,28 +33,59 @@ document.addEventListener("DOMContentLoaded", _ => {
     const randomizeBtn = document.getElementById('randomize-btn');
     console.log(randomizeBtn)
     
-    const getNumberOfBreakoutRooms = (participants) => {
-      console.log(participants);
-      console.log(participants.length);
+    const getNumberOfBreakoutRooms = (fellowVolunteerObj) => {
+      console.log(fellowVolunteerObj);
+      
       // get number of volunteers (prefix of V - )
       // get number of Fellows (prefix of # - )
       // Don't want to include staff in these numbers
-  
+      let volunteerCount = fellowVolunteerObj[volunteers].length;
+      let fellowCount = fellowVolunteerObj[fellows].length
+      console.log(`volunteer count = ${volunteerCount}`);
+      console.log(`fellow count = ${fellowCount}`);
+
+      let numberOfRooms;
       // if there are more Fellows than volunteers, create same num of rooms as there are volunteers
         // wont pair fellows
       // if more volunteers, create same num of rooms as there are Fellows
         // Will pair volunteers
-      let numberOfRooms = Math.floor(participants.length / 2)
+      if(fellowCount == volunteerCount || fellowCount < volunteerCount) {
+        numberOfRooms = fellowCount;
+      } else {
+        numberOfRooms = volunteerCount;
+      }
+
+      // let numberOfRooms = Math.floor(participants.length / 2)
       return numberOfRooms
+    }
+
+    async function getFellowsAndVolunteers() {
+      let participantResponse = await getParticipants();
+      let participants = participantResponse.participants;
+      console.log(participants);
+
+      let fellows = [];
+      let volunteers = [];
+
+      participants.forEach(participant => {
+        // Volunteers formatted with prefix 'V - ' (ex: V - VolunteerName)
+        if(participant.screenName.match(/^v\s?-/i)) { volunteers.push(participant) }
+        // Fellows formatted with prefix '# - ' (ex: 1 - FellowName)
+        if(participant.screenName.match(/^\d\s?-/)) { fellows.push(participant) }
+      })
+
+      return { fellows: fellows, volunteers: volunteers }
     }
   
   
     async function randomizeBreakoutRooms() {
-      let participantResponse = await getParticipants();
-      let participants = participantResponse.participants;
-      console.log(participants);
-  
-      let numberOfRooms = getNumberOfBreakoutRooms(participants);
+      // let participantResponse = await getParticipants();
+      // let participants = participantResponse.participants;
+      // console.log(participants);
+      let fellowVolunteerObj = await getFellowsAndVolunteers();
+      console.log(fellowVolunteerObj);
+
+      let numberOfRooms = getNumberOfBreakoutRooms(fellowVolunteerObj);
       // error handling (if number = 0...)
       console.log(`number of rooms = ${numberOfRooms}`)
   
