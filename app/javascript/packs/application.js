@@ -72,6 +72,18 @@ document.addEventListener("DOMContentLoaded", _ => {
     return numberOfRooms
   }
 
+  const addBreakoutRoom = (numberOfRooms) => {
+    console.log(numberOfRooms);
+    roomsToAdd = {};
+    console.log(roomsToAdd);
+    for(let num = 1; num <= numberOfRooms; num++) {
+      roomsToAdd[`room${num}`] = `room${num}`;
+    }
+    console.log(roomsToAdd);
+  
+    return zoomSdk.addBreakoutRoom(roomsToAdd)
+  }
+
   async function randomizeBreakoutRooms() {
     let participantResponse = await getParticipants();
     let participants = participantResponse.participants;
