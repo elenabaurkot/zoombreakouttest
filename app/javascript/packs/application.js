@@ -93,26 +93,20 @@ document.addEventListener("DOMContentLoaded", _ => {
   }
 
   const addBreakoutRoom = (name) => {
-    return zoomSdk.addBreakoutRoom(name)
-    // zoomSdk.addBreakoutRoom(name).then(response => {
-    //   console.log(response);
-    //   return response;
-    // })
+    // return zoomSdk.addBreakoutRoom(name)
+    zoomSdk.addBreakoutRoom(name).then(response => {
+      console.log(response);
+      return response;
+    })
   }
 
-  // async function randomizeBreakoutRooms() {
-  //   console.log('time to randomize');
-    
-  //   let participants = await getParticipants();
-  //   console.log(participants)
-  // }
 
   async function randomizeBreakoutRooms() {
     let participants = await getParticipants();
     console.log(participants);
 
-    let room = await addBreakoutRoom('testroom');
-    console.log(room);
+    // let room = await addBreakoutRoom('testroom');
+    // console.log(room);
   }
 
   zoomSdk.addEventListener('onParticipantChange', getParticipants)
