@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", _ => {
 
         assignParticipantToBreakoutRoom(currentBreakoutRoomId, fellowId);
         
-        volunteers.forEach(volunteer => assignParticipantToBreakoutRoom(volunteer.split(':')[0]))
+        volunteers.forEach(volunteer => assignParticipantToBreakoutRoom(currentBreakoutRoomId, volunteer.split(':')[0]))
         breakoutRoomIndex++
       }
     }
