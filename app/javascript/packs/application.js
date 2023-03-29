@@ -190,14 +190,6 @@ document.addEventListener("DOMContentLoaded", _ => {
         breakoutRoomIndex++
       }
     }
-    // const assignParticipantsToBreakoutRooms = (fellowVolunteerObj, breakoutRooms) => {
-    //   breakoutRooms.rooms.forEach((room, index) => {
-    //     assignParticipantToBreakoutRoom(room.breakoutRoomId, fellowVolunteerObj.fellows[index].participantId);
-    //     assignParticipantToBreakoutRoom(room.breakoutRoomId, fellowVolunteerObj.volunteers[index].participantId);
-
-    //   })
-    // }
-  
   
     async function randomizeBreakoutRooms() {
       // not sure if I need the await here or not
@@ -221,6 +213,12 @@ document.addEventListener("DOMContentLoaded", _ => {
       // let createdMatches = assignToBreakoutRooms(matches, breakoutRooms)
       // assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
       assignParticipantsToBreakoutRooms(matches, breakoutRooms.rooms)
+
+      // open rooms
+      await zoomSdk.openBreakoutRooms()
+      //get configuration
+      let breakoutRoomConfiguration = await zoomSdk.getBreakoutRoomList()
+      console.log(breakoutRoomConfiguration);
 
       // on breakout rooms open? 
       // export matches
