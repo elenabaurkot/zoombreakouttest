@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       // add matches to rooms
       // let createdMatches = assignToBreakoutRooms(matches, breakoutRooms)
       // assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
-      let assigning = assignParticipantsToBreakoutRooms(matches, breakoutRooms.rooms);
+      let assigning = await assignParticipantsToBreakoutRooms(matches, breakoutRooms.rooms);
       console.log(assigning);
 
       // open rooms
