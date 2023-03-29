@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       // }
     }
 
-    const assignParticipantsToBreakoutRooms = (matchesObj, breakoutRooms) => {
+    async function assignParticipantsToBreakoutRooms(matchesObj, breakoutRooms) {
       console.log(matchesObj);
       console.log(matchesObj.unmatchedFellows)
       // // let matches = matchesObj.result;
@@ -184,9 +184,9 @@ document.addEventListener("DOMContentLoaded", _ => {
         let volunteers = matches[fellow];
         console.log(volunteers);
 
-        assignParticipantToBreakoutRoom(currentBreakoutRoomId, fellowId);
+        await assignParticipantToBreakoutRoom(currentBreakoutRoomId, fellowId);
         
-        volunteers.forEach(volunteer => assignParticipantToBreakoutRoom(currentBreakoutRoomId, volunteer.split(':')[0]))
+        await volunteers.forEach(volunteer => assignParticipantToBreakoutRoom(currentBreakoutRoomId, volunteer.split(':')[0]))
         breakoutRoomIndex++
       }
     }
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       // add matches to rooms
       // let createdMatches = assignToBreakoutRooms(matches, breakoutRooms)
       // assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
-      let assigning = await assignParticipantsToBreakoutRooms(matches, breakoutRooms.rooms);
+      let assigning = assignParticipantsToBreakoutRooms(matches, breakoutRooms.rooms);
       console.log(assigning);
 
       // open rooms
