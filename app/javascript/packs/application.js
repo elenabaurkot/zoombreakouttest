@@ -167,6 +167,9 @@ document.addEventListener("DOMContentLoaded", _ => {
     }
 
     const assignParticipantsToBreakoutRooms = (matchesObj, breakoutRooms) => {
+      console.log(matchesObj)
+      console.log(breakoutRooms);
+      
       let breakoutRoomIndex = 0;
 
       for(let fellow in matchesObj) {
@@ -208,8 +211,8 @@ document.addEventListener("DOMContentLoaded", _ => {
 
       // add matches to rooms
       // let createdMatches = assignToBreakoutRooms(matches, breakoutRooms)
-      assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
-      assignParticipantsToBreakoutRooms(matches.result, breakoutRooms)
+      // assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
+      assignParticipantsToBreakoutRooms(matches.result, breakoutRooms.rooms)
 
       // on breakout rooms open? 
       // export matches
