@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", _ => {
     const getNumberOfBreakoutRooms = (fellowVolunteerObj) => {
       // get number of volunteers (prefix of V - ) && number of Fellows (prefix of # - )
       let volunteerCount = fellowVolunteerObj.volunteers.length;
-      let fellowCount = fellowVolunteerObj.fellws.length;
+      let fellowCount = fellowVolunteerObj.fellows.length;
       let numberOfRooms;
 
       // With less Fellows than volunteers, create same num of rooms as Fellows because we can pair volunteers
@@ -81,6 +81,8 @@ document.addEventListener("DOMContentLoaded", _ => {
       }
     
       volunteersLeft = volunteers.slice(volunteerCounter);
+      console.log(volunteersLeft)
+      console.log(volunteersLeft.length)
     
       if(volunteersLeft.length != 0) {
         assignVolunteers(volunteers, volunteerCounter, matchObj);
@@ -104,8 +106,14 @@ document.addEventListener("DOMContentLoaded", _ => {
         matchObj[`${fellows[i].participantId}:${fellows[i].screenName}`] = [];
       }
 
+      console.log('matchObj before vols');
+      console.log(matchObj);
+
       // named parameters instead? 
       matchObj = assignVolunteers(volunteers, 0, matchObj);
+
+      console.log('matchObj after vols');
+      console.log(matchObj);
 
       // add remaining fellows to unmatched fellows part of obj
       if(fellows.length > numberOfRooms) {
