@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       return numberOfRooms
     }
 
-    const assignVolunteers = (volunteers, volunteerCounter, matchObj) => {
+    const assignVolunteerMatches = (volunteers, volunteerCounter, matchObj) => {
       // check Fellows previousMatches
       // fellows array doesn't already include the volunteer, add them
       // previousMatches[fellow.participantId].includes(volunteers[index].participantId);
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       console.log(volunteersLeft.length)
     
       if(volunteersLeft.length != 0) {
-        assignVolunteers(volunteers, volunteerCounter, matchObj);
+        assignVolunteerMatches(volunteers, volunteerCounter, matchObj);
       }
 
       return matchObj;
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       console.log(matchObj);
 
       // named parameters instead? 
-      matchObj = assignVolunteers(volunteers, 0, matchObj);
+      matchObj = assignVolunteerMatches(volunteers, 0, matchObj);
 
       console.log('matchObj after vols');
       console.log(matchObj);
@@ -178,10 +178,12 @@ document.addEventListener("DOMContentLoaded", _ => {
         let currentBreakoutRoomId = breakoutRooms[breakoutRoomIndex].breakoutRoomId
         let fellowId = fellow.split(':')[0];
         let volunteers = matchesObj[fellow];
+        console.log(volunteers);
 
         assignParticipantToBreakoutRoom(currentBreakoutRoomId, fellowId);
         
         volunteers.forEach(volunteer => assignParticipantToBreakoutRoom(volunteer.split(':')[0]))
+        breakoutRoomIndex++
       }
     }
     // const assignParticipantsToBreakoutRooms = (fellowVolunteerObj, breakoutRooms) => {
