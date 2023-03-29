@@ -212,8 +212,8 @@ document.addEventListener("DOMContentLoaded", _ => {
       // add matches to rooms
       // let createdMatches = assignToBreakoutRooms(matches, breakoutRooms)
       // assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
-      let assigning = await assignParticipantsToBreakoutRooms(matches, breakoutRooms.rooms);
-      console.log(assigning);
+      let assigning = assignParticipantsToBreakoutRooms(matches, breakoutRooms.rooms);
+      // console.log(assigning);
 
       // open rooms
       let openRooms = await zoomSdk.openBreakoutRooms()
