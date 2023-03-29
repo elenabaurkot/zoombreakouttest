@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       // error handling (if number = 0...)
       console.log(`number of rooms = ${numberOfRooms}`)
   
-      let breakoutRooms = createBreakoutRooms(numberOfRooms);
+      let breakoutRooms = await createBreakoutRooms(numberOfRooms);
       console.log(breakoutRooms);
   
       // createMatches
