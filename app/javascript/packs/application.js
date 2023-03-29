@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       return matchObj;
     }
 
-    async function createBreakoutMatches(fellowVolunteerObj, numberOfRooms) {
+    const createBreakoutMatches = (fellowVolunteerObj, numberOfRooms) => {
       // This is a method that would get previous matches from database
       // table should store - 1:1 matches with term, fellow name, fellow participant id, volunteer name, volunteer participant id
       // Query should find all matches for the Fellows with the given participant ids
@@ -168,16 +168,16 @@ document.addEventListener("DOMContentLoaded", _ => {
 
     const assignParticipantsToBreakoutRooms = (matchesObj, breakoutRooms) => {
       console.log(matchesObj);
-      let matches = matchesObj.result;
-      console.log(matches)
+      // let matches = matchesObj.result;
+      // console.log(matches)
       console.log(breakoutRooms);
 
       let breakoutRoomIndex = 0;
 
-      for(let fellow in matches) {
+      for(let fellow in matchesObj) {
         let currentBreakoutRoomId = breakoutRooms[breakoutRoomIndex].breakoutRoomId
         let fellowId = fellow.split(':')[0];
-        let volunteers = matches[fellow];
+        let volunteers = matchesObj[fellow];
 
         assignParticipantToBreakoutRoom(currentBreakoutRoomId, fellowId);
         
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", _ => {
       // error handling (if number = 0...)
       console.log(`number of rooms = ${numberOfRooms}`)
   
-      let breakoutRooms = await createBreakoutRooms(numberOfRooms);
+      let breakoutRooms = createBreakoutRooms(numberOfRooms);
       console.log(breakoutRooms);
   
       // createMatches
