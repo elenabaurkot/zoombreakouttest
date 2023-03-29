@@ -167,13 +167,13 @@ document.addEventListener("DOMContentLoaded", _ => {
     }
 
     const assignParticipantsToBreakoutRooms = (matchesObj, breakoutRooms) => {
-      // console.log(matchesObj);
+      console.log(matchesObj);
+      console.log(matchesObj.unmatchedFellows)
       // // let matches = matchesObj.result;
       // // console.log(matches)
       // console.log(breakoutRooms);
-
-      let { remainingFellows, ...matches } = matchesObj
-      console.log(remainingFellows);
+      let { unmatchedFellows, ...matches } = matchesObj
+      console.log(unmatchedFellows);
       console.log(matches);
 
       let breakoutRoomIndex = 0;
