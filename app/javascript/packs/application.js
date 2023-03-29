@@ -166,13 +166,26 @@ document.addEventListener("DOMContentLoaded", _ => {
       // }
     }
 
-    const assignParticipantsToBreakoutRooms = (fellowVolunteerObj, breakoutRooms) => {
-      breakoutRooms.rooms.forEach((room, index) => {
-        assignParticipantToBreakoutRoom(room.breakoutRoomId, fellowVolunteerObj.fellows[index].participantId);
-        assignParticipantToBreakoutRoom(room.breakoutRoomId, fellowVolunteerObj.volunteers[index].participantId);
+    const assignParticipantsToBreakoutRooms = (matchesObj, breakoutRooms) => {
+      let breakoutRoomIndex = 0;
 
-      })
+      for(let fellow in matchesObj) {
+        let currentBreakoutRoomId = breakoutRooms[breakoutRoomIndex].breakoutRoomId
+        let fellowId = fellow.split(':')[0];
+        let volunteers = matchesObj[fellow];
+
+        assignParticipantToBreakoutRoom(currentBreakoutRoomId, fellowId);
+        
+        volunteers.forEach(volunteer => assignParticipantToBreakoutRoom(volunteer.split(':')[0]))
+      }
     }
+    // const assignParticipantsToBreakoutRooms = (fellowVolunteerObj, breakoutRooms) => {
+    //   breakoutRooms.rooms.forEach((room, index) => {
+    //     assignParticipantToBreakoutRoom(room.breakoutRoomId, fellowVolunteerObj.fellows[index].participantId);
+    //     assignParticipantToBreakoutRoom(room.breakoutRoomId, fellowVolunteerObj.volunteers[index].participantId);
+
+    //   })
+    // }
   
   
     async function randomizeBreakoutRooms() {
@@ -191,11 +204,12 @@ document.addEventListener("DOMContentLoaded", _ => {
       // probably want to pass in previous sets of matches here too
       let matches = createBreakoutMatches(fellowVolunteerObj, numberOfRooms);
       console.log("MATCHES")
-      console.log(matches);
+      console.log(matches.result);
 
       // add matches to rooms
       // let createdMatches = assignToBreakoutRooms(matches, breakoutRooms)
       assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
+      assignParticipantsToBreakoutRooms(matches.result, breakoutRooms)
 
       // on breakout rooms open? 
       // export matches
