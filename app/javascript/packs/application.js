@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", _ => {
         if (volunteers.length == volunteerCounter) { break };
       }
     
-      volunteersLeft = volunteers.slice(volunteerCounter);
+      let volunteersLeft = volunteers.slice(volunteerCounter);
       console.log(volunteersLeft)
       console.log(volunteersLeft.length)
     
