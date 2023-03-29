@@ -167,15 +167,17 @@ document.addEventListener("DOMContentLoaded", _ => {
     }
 
     const assignParticipantsToBreakoutRooms = (matchesObj, breakoutRooms) => {
-      console.log(matchesObj)
+      console.log(matchesObj);
+      let matches = matchesObj.result;
+      console.log(matches)
       console.log(breakoutRooms);
 
       let breakoutRoomIndex = 0;
 
-      for(let fellow in matchesObj) {
+      for(let fellow in matches) {
         let currentBreakoutRoomId = breakoutRooms[breakoutRoomIndex].breakoutRoomId
         let fellowId = fellow.split(':')[0];
-        let volunteers = matchesObj[fellow];
+        let volunteers = matches[fellow];
 
         assignParticipantToBreakoutRoom(currentBreakoutRoomId, fellowId);
         
