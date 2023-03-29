@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", _ => {
 
     const getNumberOfBreakoutRooms = (fellowVolunteerObj) => {
       // get number of volunteers (prefix of V - ) && number of Fellows (prefix of # - )
-      let volunteerCount = fellowVolunteerObj['volunteers'].length;
-      let fellowCount = fellowVolunteerObj['fellows'].length;
+      let volunteerCount = fellowVolunteerObj.volunteers.length;
+      let fellowCount = fellowVolunteerObj.fellws.length;
       let numberOfRooms;
 
       // With less Fellows than volunteers, create same num of rooms as Fellows because we can pair volunteers
@@ -69,13 +69,50 @@ document.addEventListener("DOMContentLoaded", _ => {
       return numberOfRooms
     }
 
-    // const createBreakoutMatches= (fellowVolunteerObj, numberOfRooms) => {
-    //   {
-    //     ``
-    //   }
-      // get ratio
-      // this could help us get num of volunteers in a room (will always be one fellow)
-      // let ratio = Math.ceiling(fellowVolunteerObj['volunteers'].length / fellowVolunteerObj['fellows'].length);
+    const assignVolunteers = (volunteers, volunteerCounter, matchObj) => {
+      // check Fellows previousMatches
+      // fellows array doesn't already include the volunteer, add them
+      // previousMatches[fellow.participantId].includes(volunteers[index].participantId);
+      // is fellow index?
+      for(let fellow in matchObj) {
+        matchObj[fellow].push(`${volunteers[volunteerCounter].participantId}:${volunteers[volunteerCounter].screenName}`);
+        volunteerCounter++;
+        if (volunteers.length == volunteerCounter) { break };
+      }
+    
+      volunteersLeft = volunteers.slice(volunteerCounter);
+    
+      if(volunteersLeft.length != 0) {
+        assignVolunteers(volunteers, volunteerCounter, matchObj);
+      }
+
+      return matchObj;
+    }
+
+    async function createBreakoutMatches(fellowVolunteerObj, numberOfRooms) {
+      // This is a method that would get previous matches from database
+      // table should store - 1:1 matches with term, fellow name, fellow participant id, volunteer name, volunteer participant id
+      // Query should find all matches for the Fellows with the given participant ids
+      // and get their matches for the term
+      // Query should return { participantId: [volunteerId, volunteerId, volunteerId]}
+      // let previousMatches = await getMatches
+      let matchObj = {};
+      let fellows = fellowVolunteerObj.fellows;
+      let volunteers = fellowVolunteerObj.volunteers;
+
+      for(let i = 0; i < numberOfRooms; i++) {
+        matchObj[`${fellows[i].participantId}:${fellows[i].screenName}`] = [];
+      }
+
+      // named parameters instead? 
+      matchObj = assignVolunteers(volunteers, 0, matchObj);
+
+      // add remaining fellows to unmatched fellows part of obj
+      if(fellows.length > numberOfRooms) {
+        matchObj['unmatchedFellows'] = fellows.slice(numberOfRooms);
+      }
+
+      return matchObj;
 
       // If fellows > volunteers -> 1 : 1 ratio with leftover fellows
       // If fellows < volunteers -> 1 : many ratio 
@@ -86,30 +123,6 @@ document.addEventListener("DOMContentLoaded", _ => {
       // 3. when done with loop if there are more fellows, add them to leftover_fellows key as array
       // 4. if there are leftover volunteers get count and start the loop from the beginning to just add volunteers until all have a room
       // 5. return the breakoutRoomMatchesObj
-
-      // fellowVolunteerObj = {
-      // 
-      // }
-
-      // breakoutRooms = {
-      //   rooms: [
-      //     {name: "Room 1", participants: [], breakoutRoomId: "689224F7-E4F3-4C3E-A130-D7D4B9B20FF5"},
-      //     {name: "Room 2", participants: [], breakoutRoomId: "689224F7-E4F3-4C3E-A130-D7D4B9B20FF6"}
-      //   ]
-      // }
-
-
-      // OBJECT TO RETURN 
-      // let matchingObject = {
-      //   breakout_room_uuid: {fellow: fellow, volunteers: [volunteer]},
-      //   breakout_room_uuid: {fellow: fellow, volunteers: [volunteer]},
-      //   unmatched_fellows: []
-      // }
-
-      // {
-      //   fellow : [volunteers]
-      // }
-
 
 
       // if fellows > volunteers
@@ -122,28 +135,31 @@ document.addEventListener("DOMContentLoaded", _ => {
         // add one volunteer to every room
         // loop back over until all volunteers are matched to a room
 
+      // OBJECT TO RETURN 
+      // let matchingObject = {
+      //   breakout_room_uuid: {fellow: fellow, volunteers: [volunteer]},
+      //   breakout_room_uuid: {fellow: fellow, volunteers: [volunteer]},
+      //   unmatched_fellows: []
+      // }
 
-
-      // get our matches
-      // after returning
-      // add matches to breakout room
-    // }
-
-    const assignParticipantsToBreakoutRooms = (fellowVolunteerObj, breakoutRooms) => {
       // breakoutRooms = {
       //   rooms: [
       //     {name: "Room 1", participants: [], breakoutRoomId: "689224F7-E4F3-4C3E-A130-D7D4B9B20FF5"},
       //     {name: "Room 2", participants: [], breakoutRoomId: "689224F7-E4F3-4C3E-A130-D7D4B9B20FF6"}
       //   ]
       // }
+
+      // fellowVolObj = {
+      //  fellows: [
+      //      {screenName: "Elena Baurkot", participantUUID: "D979BD6F-70A6-5C5F-E704-A81D78462274",
+      //       participantId: "16778240", role: "host"},
+      //       {}, {}],
+      //  volunteers: [{}, {}, {}]
+      // }
+    }
+
+    const assignParticipantsToBreakoutRooms = (fellowVolunteerObj, breakoutRooms) => {
       breakoutRooms.rooms.forEach((room, index) => {
-        // fellowVolObj = {
-        //  fellows: [
-        //      {screenName: "Elena Baurkot", participantUUID: "D979BD6F-70A6-5C5F-E704-A81D78462274",
-        //       participantId: "16778240", role: "host"},
-        //       {}, {}],
-        //  volunteers: [{}, {}, {}]
-        // }
         assignParticipantToBreakoutRoom(room.breakoutRoomId, fellowVolunteerObj.fellows[index].participantId);
         assignParticipantToBreakoutRoom(room.breakoutRoomId, fellowVolunteerObj.volunteers[index].participantId);
 
@@ -163,17 +179,21 @@ document.addEventListener("DOMContentLoaded", _ => {
       let breakoutRooms = await createBreakoutRooms(numberOfRooms);
       console.log(breakoutRooms);
   
-      assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
       // createMatches
       // probably want to pass in previous sets of matches here too
-      // let matches = createBreakoutMatches(fellowVolunteerObj, numberOfRooms);
+      let matches = createBreakoutMatches(fellowVolunteerObj, numberOfRooms);
+      console.log("MATCHES")
+      console.log(matches);
 
       // add matches to rooms
       // let createdMatches = assignToBreakoutRooms(matches, breakoutRooms)
+      assignParticipantsToBreakoutRooms(fellowVolunteerObj, breakoutRooms)
+
+      // on breakout rooms open? 
       // export matches
     }
   
-    zoomSdk.addEventListener('onParticipantChange', getParticipants)
+    // zoomSdk.addEventListener('onParticipantChange', getParticipants)
     randomizeBtn.addEventListener('click', randomizeBreakoutRooms)
   })
 })
